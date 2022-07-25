@@ -2,19 +2,27 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
-  app.use('/app-pro', createProxyMiddleware({
-    target: 'https://api.weixin.qq.com',
+  app.use('/360pro', createProxyMiddleware({ //360测试服务器接口
+    target: 'https://360dev.jiuzhangdigit.com',
     changeOrigin: true,
     pathRewrite: { //路径替换
-      '^/app-pro': '', 
+      '^/360pro': '', 
     }
   }));
 
-  app.use('/pro-api', createProxyMiddleware({
-    target: 'http://121.89.221.24',
+  app.use('/api', createProxyMiddleware({ //邵亦博接口
+    target: 'http://test-gw.mashangxiu.com',
     changeOrigin: true,
     pathRewrite: { //路径替换
-      '^/pro-api': '', 
+      '^/api': '', 
+    }
+  }));
+
+  app.use('/api2', createProxyMiddleware({ //邵亦博接口
+    target: 'http://47.93.114.103:6688',
+    changeOrigin: true,
+    pathRewrite: { //路径替换
+      '^/api2': '', 
     }
   }));
 };

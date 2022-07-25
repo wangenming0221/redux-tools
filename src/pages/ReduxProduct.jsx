@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { add, subAsync, pus, del } from './store/modules/counter';
+import { add, subAsync, pus, del } from '../store/modules/counter';
+import { Button } from 'antd';
 
-function App() {
+export default function ReduxProduct() {
   const dispatch = useDispatch();
   const { count, list } = useSelector(state => state.counter);
 
@@ -21,8 +22,8 @@ function App() {
     <div className="App">
       <ul>
         <li>{count}</li>
-        <li><button onClick={()=>handleAdd()}>增加</button></li>
-        <li><button onClick={()=>handleSub()}>减少</button></li>
+        <li><Button onClick={()=>handleAdd()}>增加</Button></li>
+        <li><Button onClick={()=>handleSub()}>减少</Button></li>
         <hr />
         <ul>
           {
@@ -32,9 +33,7 @@ function App() {
           }
         </ul>
       </ul>
-      <li><button onClick={()=>handlePus()}>数组增加</button></li>
+      <li><Button onClick={()=>handlePus()}>数组增加</Button></li>
     </div>
   );
-}
-
-export default App;
+};
